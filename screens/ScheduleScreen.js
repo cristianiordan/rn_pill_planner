@@ -1,14 +1,18 @@
 import { View, Text, StyleSheet } from "react-native";
 import MedsButton from "../components/ManageMeds/MedsButton";
 import { GlobalStyles } from "../constants/styles";
+import { useContext } from "react";
+import { MedicineContext } from "../store/medicine-context";
 
 const ScheduleScreen = () => {
+  const medicineCtx = useContext(MedicineContext);
+
   return (
     <View style={styles.rootContainer}>
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <MedsButton
-            value="Specific Days"
+            value={medicineCtx.frequency.value}
             navigateTo="StrengthScreen"
             iconSize={24}
           >
@@ -18,23 +22,20 @@ const ScheduleScreen = () => {
         <View style={styles.inputContainer}>
           <MedsButton
             navigateTo="StrengthScreen"
-            iconColor={GlobalStyles.colors.primary400}
             iconSize={24}
-            iconName="pill"
             title="How often"
+            value={`${medicineCtx.howOften.value} days`}
           >
-            Strength
+            Every
           </MedsButton>
         </View>
         <View style={styles.inputContainer}>
           <MedsButton
             navigateTo="StrengthScreen"
-            iconColor={GlobalStyles.colors.primary400}
             iconSize={24}
-            iconName="pill"
             title="How many times a day"
           >
-            Strength
+            {medicineCtx.timesADay.value}
           </MedsButton>
         </View>
       </View>

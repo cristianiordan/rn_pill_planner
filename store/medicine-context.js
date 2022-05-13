@@ -3,10 +3,14 @@ import { createContext, useReducer } from "react";
 export const MedicineContext = createContext({
   allMedications: [],
   allUnits: [],
+  allFrequencies: [],
+  allTimesADayValues: [],
   availableMedications: [],
   medication: { id: "", value: "", IsValid: false },
   strength: { value: "", IsValid: false },
   units: { value: "", IsValid: false },
+  frequency: { id: "", value: "" },
+  timesAday: { id: "" },
   addMedication: () => {},
   checkMedication: () => {},
   addStrength: () => {},
@@ -587,20 +591,29 @@ const initialState = {
     { id: 2, value: "Specific Days" },
     { id: 3, value: "Days Interval" },
   ],
-  allTimesADayValues: [
-    { id: 1, value: 1 },
-    { id: 2, value: 2 },
-    { id: 3, value: 3 },
-    { id: 4, value: 4 },
-    { id: 5, value: 5 },
-    { id: 6, value: 6 },
+  allHowOftenDays: [
+    { id: 1, value: 2 },
+    { id: 2, value: 3 },
+    { id: 3, value: 4 },
+    { id: 4, value: 5 },
+    { id: 5, value: 6 },
   ],
+  allTimesADayValues: [
+    { id: 1, value: 1, text: "Once a Day" },
+    { id: 2, value: 2, text: "Twice a Day" },
+    { id: 3, value: 3, text: "Three times a Day" },
+    { id: 4, value: 4, text: "Four times a Day" },
+    { id: 5, value: 5, text: "Five times a Day" },
+    { id: 6, value: 6, text: "Six times a Day" },
+  ],
+
   availableMedications: [],
   medication: { id: "", value: "", IsValid: false },
   strength: { value: "", IsValid: false },
   units: { id: "", IsValid: false },
-  frequency: { id: 1 },
-  timesADay: { id: 1 },
+  frequency: { id: 3, value: "Days Interval" },
+  howOften: { id: 1, value: 2 },
+  timesADay: { id: 1, value: "Once a Day" },
 };
 
 const medicineReducer = (state, action) => {
